@@ -140,6 +140,16 @@ Using the two fitted lines to calculate radius of both line. The displayed radiu
     mean_curverad = (left_curverad + right_curverad) / 2
 ```
 
+The position of the vehicle with respect to center is calculated as the following:
+
+```python
+# calculate vehicle pos to line center
+# negative means image center is on the right of line center
+dist_center = ((leftx[0] + rightx[0])/2 - binary_warped.shape[1]/2)*xm_per_pix
+```
+
+It is the difference between image center x coordinate and two found bottom pixels' average x coordinate.
+
 The pixel to meter conversion is hardcoded. The road line block is 3 meters long corresponding to 175 warped pixels. The distance between left and right line is 3.7 meters long corresponding to 680 warped pixels.
 
 ```python
@@ -163,7 +173,11 @@ Here is an example of my result on a test image:
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](../output_videos/project_video.mp4)
+
+Here's a [link to my harder challenge video result](../output_videos/harder_challenge_video.mp4)
+
+The pipeline is unable to process `input_videos/challenge.mp4`. There is an image where the pipeline can't find any line pixels and crash the process.
 
 ---
 
@@ -171,4 +185,4 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+The pipeline is definitely not robust enough. It is a really hard project and need to test lots of parameters to make sure every step of the pipeline work. The pipeline will fail when there is too much light or there are some textures on the road. The pixels selection will often include either too much noise or no lines. Implementation of supervised machine learning will make it more robust.
