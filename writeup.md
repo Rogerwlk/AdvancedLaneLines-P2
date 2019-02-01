@@ -173,9 +173,9 @@ Here is an example of my result on a test image:
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](../output_videos/project_video.mp4)
+Here's a [link to my video result](output_videos/project_video.mp4)
 
-Here's a [link to my harder challenge video result](../output_videos/harder_challenge_video.mp4)
+Here's a [link to my harder challenge video result](output_videos/harder_challenge_video.mp4)
 
 The pipeline is unable to process `input_videos/challenge.mp4`. There is an image where the pipeline can't find any line pixels and crash the process.
 
